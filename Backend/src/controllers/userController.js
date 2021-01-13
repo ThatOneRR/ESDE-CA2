@@ -19,9 +19,9 @@ exports.processDesignSubmission = async(req, res, next) => {
     }
 
     try {
-        let result = fileDataManager.uploadFile(file);
-        console.log('check result variable in fileDataManager.upload code block\n', result);
-        console.log('check error variable in fileDataManager.upload code block\n', error);
+        let result = await fileDataManager.uploadFile(file);
+        console.log('check result variable in fileDataManager.upload code block', result);
+        // console.log('check error variable in fileDataManager.upload code block', error);
         let uploadResult = result;
         //Update the file table inside the MySQL when the file image
         //has been saved at the cloud storage (Cloudinary)
@@ -33,7 +33,7 @@ exports.processDesignSubmission = async(req, res, next) => {
             console.log('Inspecting result variable inside fileDataManager.uploadFile code');
             if (result2) {
                 console.log(result2);
-                res.status(200).json(createJSONResponse('File submission complete', Status.SUCCESS, { 'message': message, 'imageURL': imageURL }));
+                return res.status(200).json(createJSONResponse('File submission complete', Status.SUCCESS, { 'message': 'File submission complete', 'imageURL': imageURL }));
             }
         } catch (error) {
             res.status(500).json(error);
