@@ -6,7 +6,7 @@ if ($profileContainer.length != 0) {
         window.history.back();
     });
     function getOneUser() {
-        const baseUrl = 'http://localhost:5000';
+        const baseUrl = 'http://34.226.228.52:5000';
         let userId = localStorage.getItem('user_id');
         axios({
             headers: {
