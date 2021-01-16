@@ -154,7 +154,7 @@ exports.processUpdateOneDesign = async (req, res, next) => {
     try {
         results = await userManager.updateDesign(fileId, designTitle, designDescription);
         console.log(results);
-        return res.status(200).json(createJSONResponse('Update complete', Status.SUCCESS, jsonResult));
+        return res.status(200).json(createJSONResponse('Update complete', Status.SUCCESS, results));
     } catch (error) {
         console.log('processUpdateOneUser method : catch block section code is running');
         console.log(error, '=======================================================================');
