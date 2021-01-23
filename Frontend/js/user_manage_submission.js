@@ -6,23 +6,30 @@ if ($searchDesignFormContainer.length != 0) {
     //to server-side api when the #submitButton element fires the click event.
     $('#submitButton').on('click', function(event) {
         event.preventDefault();
-        const baseUrl = 'http://34.226.228.52:5000';
+        // const baseUrl = 'http://34.226.228.52:5000';
+        const baseUrl = 'https://spwtl6i0ig.execute-api.us-east-1.amazonaws.com/prod';
         let searchInput = $('#searchInput').val();
-        let userId = localStorage.getItem('token');
+        // let userId = localStorage.getItem('token');
+        let userId = localStorage.getItem('user_id');
         axios({
                 headers: {
                     'user': userId
                 },
                 method: 'get',
-                url: baseUrl + '/api/user/process-search-design/1/' + searchInput,
+                url: baseUrl + '?' + searchInput,
             })
             .then(function(response) {
                 //Using the following to inspect the response.data data structure
                 //before deciding the code which dynamically generates cards.
                 //Each card describes a design record.
                 //console.dir(response.data);
-                const records = response.data.data.filedata;
-                const totalNumOfRecords = response.data.data.total_number_of_records;
+
+                // const records = response.data.data.filedata;
+                const records = response.data.results;
+
+                // const totalNumOfRecords = response.data.data.total_number_of_records;
+                const totalNumOfRecords = records.length;
+
                 //Find the main container which displays page number buttons
                 let $pageButtonContainer = $('#pagingButtonBlock');
                 //Find the main container which has the id, dataBlock
