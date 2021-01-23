@@ -12,7 +12,7 @@ if ($searchDesignFormContainer.length != 0) {
         // let userId = localStorage.getItem('token');
         let userId = localStorage.getItem('user_id');
         var searchUrl = baseUrl;
-        if (searchInput == '') searchUrl += '?searchInput=' + searchInput;
+        if (searchInput != '') searchUrl += '?searchInput=' + searchInput;
         axios({
                 headers: {
                     'user': userId
