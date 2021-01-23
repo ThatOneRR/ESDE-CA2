@@ -47,15 +47,15 @@ if ($searchDesignFormContainer.length != 0) {
                 }
                 for (let index = 0; index < records.length; index++) {
                     let record = records[index];
-                    console.log(record.cloudinary_url);
+                    console.log(record.cloudinary_url.S);
                     let $card = $('<div></div>').addClass('card').attr('style', 'width: 18rem;');
-                    $card.append($('<img></img>').addClass('card-img-top').addClass('app_thumbnail').attr('src', record.cloudinary_url));
+                    $card.append($('<img></img>').addClass('card-img-top').addClass('app_thumbnail').attr('src', record.cloudinary_url.S));
                     let $cardBody = $('<div></div>').addClass('card-body');
                     let $editDesignButtonBlock = $('<div></div>').addClass('col-md-2 float-right');
-                    $editDesignButtonBlock.append($('<a>Update</a>').addClass('btn btn-primary').attr('href', 'update_design.html?id=' + record.file_id));
+                    $editDesignButtonBlock.append($('<a>Update</a>').addClass('btn btn-primary').attr('href', 'update_design.html?id=' + record.file_id.N));
                     $cardBody.append($editDesignButtonBlock);
-                    $cardBody.append($('<h5></h5>').addClass('card-title').text(record.design_title));
-                    $cardBody.append($('<p></p>').addClass('card-text').text(record.design_description));
+                    $cardBody.append($('<h5></h5>').addClass('card-title').text(record.design_title.S));
+                    $cardBody.append($('<p></p>').addClass('card-text').text(record.design_description.S));
                     $card.append($cardBody);
                     //After preparing all the necessary HTML elements to describe the file data,
                     //I used the code below to insert the main parent element into the div element, dataBlock.
