@@ -11,12 +11,14 @@ if ($searchDesignFormContainer.length != 0) {
         let searchInput = $('#searchInput').val();
         // let userId = localStorage.getItem('token');
         let userId = localStorage.getItem('user_id');
+        var searchUrl = baseUrl;
+        if (searchInput == '') searchUrl += '?searchInput=' + searchInput;
         axios({
                 headers: {
                     'user': userId
                 },
                 method: 'get',
-                url: baseUrl + '?' + searchInput,
+                url: searchUrl,
             })
             .then(function(response) {
                 //Using the following to inspect the response.data data structure
